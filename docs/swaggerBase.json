@@ -1,0 +1,12 @@
+{
+  "swagger":"2.0",
+  "info":{
+    "title":"rAsPI documentation",
+    "version":"1.0.0",
+    "description":"rAsPI is meant to be a general purpose API that can be easily modified and added to for use with raspberry pi projects."
+  },
+  "basepath":"/api",
+  "host":"192.168.1.106:3000",
+  "schemes":["http"],
+  "consumes":"application/json"
+}

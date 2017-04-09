@@ -1,0 +1,66 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "rAsPI documentation",
+    "version": "1.0.0",
+    "description": "rAsPI is meant to be a general purpose API that can be easily modified and added to for use with raspberry pi projects."
+  },
+  "basepath": "/api",
+  "host": "192.168.1.106:3000",
+  "schemes": [
+    "http"
+  ],
+  "consumes": "application/json",
+  "paths": {
+    "/api/alarm": {
+      "post": {
+        "description": "This endpoint allows you to post an allowed command (either sysShutdown or reboot) to be executed by the pi.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "event",
+            "description": "An alarm event to send.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phrase": {
+                  "description": "The phrase to be spoken",
+                  "type": "string"
+                },
+                "alarm": {
+                  "description": "play the alarm tone before speaking",
+                  "type": "integer",
+                  "default": 3
+                },
+                "flash": {
+                  "description": "flash the lights before speaking",
+                  "type": "integer",
+                  "default": 3
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "An error string",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

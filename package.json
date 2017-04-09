@@ -1,0 +1,39 @@
+{
+  "name": "rAsPI",
+  "version": "1.0.0",
+  "description": "A general purpose API for raspberry pi projects",
+  "main": "server.js",
+  "scripts": {
+    "run": "./.env && node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "swagger-inline './http/**/*.js' --base './docs/swaggerBase.json' --out './docs/swagger.json'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewmherren/rAsPI.git"
+  },
+  "keywords": [
+    "raspberry",
+    "pi",
+    "api",
+    "raspi"
+  ],
+  "author": "Andrew Herren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewmherren/rAsPI/issues"
+  },
+  "homepage": "https://github.com/andrewmherren/rAsPI#readme",
+  "dependencies": {
+    "async": "^2.3.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "devDependencies": {
+    "standard": "^9.0.2",
+    "swagger-inline": "0.0.8",
+    "webpack": "^2.3.2"
+  }
+}
