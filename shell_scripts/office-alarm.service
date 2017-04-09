@@ -1,0 +1,13 @@
+[Unit]
+Description=Office alarm
+After=gpio-init.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/office_alarm/
+ExecStart=/usr/local/bin/node /office_alarm/server.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
