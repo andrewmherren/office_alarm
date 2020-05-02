@@ -19,6 +19,15 @@ confirm node is working properly
 node -v
 ```
 
+setup usb sound device.
+edit /usr/share/alsa/alsa.conf
+find
+```
+    defaults.ctl.card 0
+    defaults.pcm.card 0
+```
+and change 0 to 1
+
 To setup this project on a raspberry pi after the requirements have been installed:
 ```
 sudo git clone https://github.com/andrewmherren/office_alarm.git
