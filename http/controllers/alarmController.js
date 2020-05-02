@@ -46,14 +46,14 @@ exports.post = function (request, response) {
       let alarmCnt = request.body.alarm
       if (!isNaN(alarmCnt) && parseInt(alarmCnt) <= 5) {
         // If there was an alarm request, set the appropriate volume and play the sound the appropriate number of times 
-        execSync('amixer -c 0 sset PCM,0 84%')
+        execSync('amixer -c 1 cset numid=6 29,29')
         async.during(
           function(callback) {
             return callback(null, alarmCnt > 0)
           },
           function (callback) {
             alarmCnt--
-            exec('AUDIODEV=hw:0 play /etc/hipaa_alarm/alarm.wav')
+            exec('play /etc/hipaa_alarm/alarm.wav')
 	    // for some reason the previous command returns immediatly even though the sound is still playing. 
             // The following timeout ensures that the next sound doesnt start until this one ends
             setTimeout(function(){ callback(null,'success') }, 2300)
@@ -96,9 +96,9 @@ exports.post = function (request, response) {
       response.status(400).send({'error': error})
     } else if (request.body.phrase != null) {
       // If speach was requested, adjust the sound level to the correct setting
-      execSync('amixer -c 0 sset PCM,0 96%')
+      execSync('amixer -c 1 cset numid=6 37,37')
       // And then play the sound that was downloaded earlier
-      exec('AUDIODEV=hw:0 play /dev/shm/out.wav', (error, stdout, stderr) => {
+      exec('play /dev/shm/out.wav', (error, stdout, stderr) => {
         if (error) {
           response.status(400).send({'error': stderr})
           return null
